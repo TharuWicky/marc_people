@@ -35,6 +35,78 @@ The `email` field is important. In the website data model it acts as the primary
 
 You are free to use any email address you want, but once other data starts referring to that email, changing it later can break those links.
 
+## :triangular_ruler: YAML front matter basics
+
+The block between the top `---` line and the next `---` line is YAML front matter.
+
+This is where the website reads your profile metadata.
+
+A few YAML gotchas to watch for:
+- every field name must be followed by a colon, like `email:`
+- do not use tabs for indentation
+- if a value contains special characters, a colon, or you just want to be safe, wrap it in quotes
+- do not forget the closing `---` line before your normal Markdown biography starts
+- the `photo` path must match the actual file name exactly
+- avoid extra spaces inside file paths
+
+Good example:
+
+```yaml
+email: jane.doe@example.com
+post: Volunteer
+name: Jane Doe
+photo: ./photos/jane_doe.jpg
+```
+
+Safe quoted example:
+
+```yaml
+name: "Jane Doe"
+post: "Research Assistant"
+```
+
+Since the people front matter only uses single values and not YAML lists, it is simpler than `marc_projects`, but the field names and colons still need to be correct.
+
+## :memo: What you can write in the content section
+
+Everything below the closing `---` line is normal Markdown content.
+
+For people profiles, this usually means your biography. You can include:
+- plain paragraphs
+- section headings
+- bullet lists
+- links
+- emphasis such as bold or italic text
+- images using Markdown syntax
+
+Example:
+
+```md
+---
+email: jane.doe@example.com
+post: Volunteer
+name: Jane Doe
+photo: ./photos/jane_doe.jpg
+---
+Jane Doe is interested in biomedical signal processing and machine learning.
+
+## Research Interests
+
+- Wearable sensing
+- Signal processing
+- Applied AI
+
+You can also link to your work: [Google Scholar](https://scholar.google.com/).
+
+Here is an inline image:
+![Lab photo](./photos/jane_doe.jpg)
+```
+
+If you include an image in the content section, use a relative path to a file inside the repository. The image can be placed at any place inside the repo (You don't need to place it in the cover_images folder, in fact __don't__ place them there :sweat_smile: !)
+
+
+Keep it reasonably simple and readable. Plain paragraphs are completely fine.
+
 ## :bookmark_tabs: Fields used by the website
 
 The website currently validates each person entry with these fields:
